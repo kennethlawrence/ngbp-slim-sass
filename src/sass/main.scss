@@ -6,11 +6,11 @@
 
 
 /**
- * First, we include the Twitter Bootstrap LESS files. Only the ones used in the
+ * First, we include any vendor SASS files. Only the ones used in the
  * project should be imported as the rest are just wasting space.
  */
 
-@import '../../vendor/bootstrap/less/bootstrap.less';
+//@import '../../vendor/bootstrap/less/bootstrap.less';
 
 
 /**
@@ -18,7 +18,7 @@
  * definitions in our imported stylesheets.
  */
 
-@import 'variables.less';
+@import 'variables';
 
 
 /**
@@ -98,13 +98,16 @@ h2 {
       margin-left: 20px;
 
       a, a:visited {
-        color: @gray-light;
+        color: $gray-light;
         text-decoration: none;
         font-size: 40px;
-        .transition( 250ms ease-in-out );
+        .transition {
+          animation-duration: 3s;
+          animation-timing-function: ease-in-out;
+        };
 
         &:hover {
-          color: @gray;
+          color: $gray;
         }
       }
     }
@@ -119,5 +122,5 @@ h2 {
  * TODO: In a later version of this boilerplate, I'd like to automate this.
  */
 
-@import '../app/home/home.less';
+@import '../app/home/home';
 

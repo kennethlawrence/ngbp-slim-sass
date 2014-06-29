@@ -11,7 +11,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-coffee');
-  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-conventional-changelog');
   grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-coffeelint');
@@ -237,24 +237,26 @@ module.exports = function ( grunt ) {
       }
     },
 
-    /**
-     * `grunt-contrib-less` handles our LESS compilation and uglification automatically.
-     * Only our `main.less` file is included in compilation; all other files
-     * must be imported from this file.
+    /*
+     * 'grunt-sass' handles our SASS compilation and uglification
+     * automatically.  Only our 'main.scss' file is included in compiliation;
+     * all other files must be imported from this file.
      */
-    less: {
-      build: {
+    sass: {
+     build: {
         files: {
-          '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.less %>'
+          '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.scss %>'
+        },
+        options: {
+          outputStyle: 'nested'
         }
       },
       compile: {
         files: {
-          '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.less %>'
+          '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.scss %>'
         },
         options: {
-          cleancss: true,
-          compress: true
+          outputStyle: 'compressed'
         }
       }
     },
@@ -496,9 +498,10 @@ module.exports = function ( grunt ) {
       /**
        * When the CSS files change, we need to compile and minify them.
        */
-      less: {
-        files: [ 'src/**/*.less' ],
-        tasks: [ 'less:build' ]
+
+      scss: {
+        files: [ 'src/**/*.scss' ],
+        tasks: [ 'sass:build' ]
       },
 
       /**
@@ -552,7 +555,7 @@ module.exports = function ( grunt ) {
    * The `build` task gets your app ready to run for development and testing.
    */
   grunt.registerTask( 'build', [
-    'clean', 'html2js', 'jshint', 'coffeelint', 'coffee', 'less:build',
+    'clean', 'html2js', 'jshint', 'coffeelint', 'coffee', 'sass:build',
     'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
     'copy:build_appjs', 'copy:build_vendorjs', 'index:build', 'karmaconfig',
     'karma:continuous' 
@@ -563,7 +566,7 @@ module.exports = function ( grunt ) {
    * minifying your code.
    */
   grunt.registerTask( 'compile', [
-    'less:compile', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
+    'sass:compile', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
   ]);
 
   /**
