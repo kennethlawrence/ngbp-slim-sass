@@ -1,4 +1,4 @@
-# 
+# ngbp-slim-sass
 
 A *slightly less* opinionated kickstarter for [AngularJS](http://angularjs.org) projects.
 Forked from the original [ngbp](http://https://github.com/ngbp/ngbp).
