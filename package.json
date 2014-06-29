@@ -1,8 +1,8 @@
 {
-  "author": "Josh David Miller",
-  "name": "ngbp",
-  "version": "0.3.2",
-  "homepage": "https://github.com/ngbp/ngbp",
+  "author": "Kenneth Lawrence",
+  "name": "ngbp-slim-sass",
+  "version": "0.1.0",
+  "homepage": "https://github.com/kennethlawrence/ngbp-slim-sass",
   "licenses": {
     "type": "MIT",
     "url": "https://raw.github.com/ngbp/ngbp/master/LICENSE"
@@ -10,7 +10,7 @@
   "bugs": "https://github.com/ngbp/ngbp/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:ngbp/ngbp.git"
+    "url": "git@github.com:kennethlawrence/ngbp-slim-sass.git"
   },
   "dependencies": {},
   "devDependencies": {
