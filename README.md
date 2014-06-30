@@ -1,7 +1,7 @@
 # ngbp-slim-sass
 
 A *slightly less* opinionated kickstarter for [AngularJS](http://angularjs.org) projects.
-Forked from the original [ngbp](http://https://github.com/ngbp/ngbp).
+Forked from the original [ngBoilerplate](http://https://github.com/ngbp/ngbp).
 
 ***
 
@@ -24,16 +24,16 @@ Happy hacking!
 
 ## Purpose
 
-`ngbp-slim-sass` is a slim project that is not intended to contain an extensive array of
-options, frameworks, or packages, but rather provide a basic starting AngularJS
-starting point, build around the solid directory structure, and beautifully executed
-build system contained within the [ngBoilerplate](https://github.com/ngbp/ngbp) project, 
-as well as make use of the [SASS](http://sass-lang.com) CSS preprocessor language.
+`ngbp-slim-sass` is a slim kickstart that is not intended to contain an extensive array of
+options, frameworks, or packages, but rather provide a basic AngularJS
+starting point. It is built around the solid directory structure, and beautifully executed
+build system contained within the [ngBoilerplate](https://github.com/ngbp/ngbp) project, and
+makes use of the [SASS](http://sass-lang.com) CSS preprocessor language.
 
 ## Philosophy
 
 The principal goal of `ngp-slim-sass` is the same as that of 
-[ngBoilderplate](https://github.com/ngbp/ngbp), to set projects up for long-term
+[ngBoilerplate](https://github.com/ngbp/ngbp), to set projects up for long-term
 success.  So `ngbp-slim-sass` tries to follow these best practices everywhere it can:
 
 - Properly orchestrated modules to encourage drag-and-drop component re-use.
