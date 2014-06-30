@@ -1,9 +1,24 @@
 # ngbp-slim-sass
 
 A *slightly less* opinionated kickstarter for [AngularJS](http://angularjs.org) projects.
+Based around AngularJS, SASS, Bower, and Grunt.
 Forked from the original [ngBoilerplate](http://https://github.com/ngbp/ngbp).
 
 ***
+## Purpose
+
+ngbp-slim-sass was created to act as a robust starting point for building scalable, well
+tested, easy to develop AngularJS applications. It inherits much of its mojo from the
+original [ngBoilerplate](http://https://github.com/ngbp/ngbp), but removes some of the
+components to allow a little more developer freedom in deciding which frameworks and
+libraries get built into your application.
+
+### Major differences from ngBoilerplate
+
+* SASS css preprocessor added (via libsass)
+* LESS css preprocessor removed
+* Twitter Bootstrap removed
+* AngularUI-Bootstrap removed
 
 ## Quick Start
 
@@ -19,8 +34,7 @@ $ grunt watch
 ```
 
 Finally, open `file:///path/to/ngbp-slim-sass/build/index.html` in your browser.
-
-Happy hacking!
+You're good to go. 
 
 ## Purpose
 
@@ -29,6 +43,54 @@ options, frameworks, or packages, but rather provide a basic AngularJS
 starting point. It is built around the solid directory structure, and beautifully executed
 build system contained within the [ngBoilerplate](https://github.com/ngbp/ngbp) project, and
 makes use of the [SASS](http://sass-lang.com) CSS preprocessor language.
+
+## Popular Options
+
+Adding additional components to your application is easy, here's examples of
+two very popular framework options.
+
+### Twitter Bootstrap
+To bring Bootstrap into you're project you could use bower to install the dependencies:
+```sh
+$ bower install bootstrap-sass-official --save-dev
+$ bower install angular-bootstrap --save-dev
+```
+Then simply import the vendor sass files at the top of your **main.scss**:
+``
+ @import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap';
+``
+and add the angular-bootstrap javascript file to your **build.config.js** - vendor_files.js section.
+``
+  vendor_files: {
+    js: [
+      ...,
+      'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
+      ...
+``
+
+## Zurb Foundation
+Adding the Foundation Framework is a similar process.
+Foundation can be installed in your project with:
+```sh
+$ bower install zurb/bower-foundation --save-dev"
+$ bower install angular-foundation --save-dev
+```
+Then simply import the vendor sass files at the top of your **src/sass/main.scss**:
+``
+ @import '../../vendor/foundation/scss/foundation';
+``
+and add the angular-foundation javascript file to your **build.config.js** - vendor_files.js section.
+``
+  vendor_files: {
+    js: [
+      ...,
+      'vendor/angular-bootstrap/mm-foundation-tpls.min.js',
+      ...
+``
+
+These are only two of many possible components you can bring into your project. `ngbp-slim-sass`
+tries to make very few decisions for you, and still give you a quick and effective start to
+your AngularJS projects.
 
 ## Philosophy
 

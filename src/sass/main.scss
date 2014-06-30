@@ -6,12 +6,27 @@
 
 
 /**
- * First, we include any vendor SASS files. Only the ones used in the
- * project should be imported as the rest are just wasting space.
+ * First, we include any vendor SASS files.
+ * The two examples below show importing the entire vendor SASS collections,
+ * but preferably you would '@import' only the specific partials used by
+ * your application.
  */
 
-//@import '../../vendor/bootstrap/less/bootstrap.less';
+/** 
+ * Example install bootstrap-sass-official via:
+ *   "bower install bootstrap-sass-official --save-dev"
+ * and import the sass files as below:
+ */
 
+ //@import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap';
+
+ /**
+  * Example: install zurb/bower-foundation via:
+  *   "bower install zurb/bower-foundation --save-dev"
+  * and import the sass files as below
+  */
+
+  //@import '../../vendor/foundation/scss/foundation';
 
 /**
  * This is our main variables file. We must include it last so we can overwrite any variable
