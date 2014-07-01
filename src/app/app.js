@@ -6,7 +6,14 @@ angular.module( 'ngBoilerplate', [
   'ui.router'
 ])
 
-.config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {
+.config( function myAppConfig ( $stateProvider, $urlRouterProvider, $locationProvider ) {
+  /**
+   * To enable AngularJS html5Mode uncomment the line below.
+   * NOTE: Your production server needs to be properly configured
+   *       for html rewrites as well.
+   */
+  //$locationProvider.html5Mode(true);
+
   $urlRouterProvider.otherwise( '/home' );
 })
 

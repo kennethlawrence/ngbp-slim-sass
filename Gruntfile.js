@@ -11,6 +11,8 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-coffee');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-connect-rewrite');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-conventional-changelog');
   grunt.loadNpmTasks('grunt-bump');
@@ -83,6 +85,50 @@ module.exports = function ( grunt ) {
         pushTo: 'origin'
       }
     },    
+
+    /**
+     * The development server configuration. Preconfigured for livereload, and
+     * AngularJS html5Mode rewrites. To allow access from anywhere, change 
+     * the hostname below to '*'.
+     *
+     * NOTE: If you use a Live Reload browser plugin, set livereload to false
+     * in the options directly below.
+     */
+
+    connect: {
+      options: {
+        livereload: true,
+        hostname: 'localhost'
+      },
+      development: {
+        options: {
+            port: 8000,
+            base: 'build',
+            middleware: function( connect, options ) {
+              var middlewares = [];
+
+              middlewares.push( require( 'grunt-connect-rewrite/lib/utils' )
+                   .rewriteRequest
+                  );
+              if( !Array.isArray( options.base ) ) {
+                  options.base = [ options.base ];
+              }
+
+              options.base.forEach( function( base) {
+                  middlewares.push( connect.static( base ) );
+              });
+
+              return middlewares;
+
+            }
+          }
+      },
+      rules: [
+        {
+          from: '^(?![^?!#]*\\.).*', to: '/index.html'
+        }
+      ] 
+    },
 
     /**
      * The directories to delete when `grunt clean` is executed.
@@ -544,7 +590,7 @@ module.exports = function ( grunt ) {
    * before watching for changes.
    */
   grunt.renameTask( 'watch', 'delta' );
-  grunt.registerTask( 'watch', [ 'build', 'karma:unit', 'delta' ] );
+  grunt.registerTask( 'watch', [ 'build', 'karma:unit', 'server', 'delta' ] );
 
   /**
    * The default task is to build and compile.
@@ -586,6 +632,11 @@ module.exports = function ( grunt ) {
       return file.match( /\.css$/ );
     });
   }
+
+  /**
+   * Configure ans start the development server.
+   */
+  grunt.registerTask( 'server', ['configureRewriteRules', 'connect:development']);
 
   /** 
    * The index.html template includes the stylesheet and javascript sources

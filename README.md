@@ -15,6 +15,7 @@ libraries get built into your application.
 
 ### Major differences from ngBoilerplate
 
+* Development server Grunt task added.
 * SASS css preprocessor added (via libsass)
 * LESS css preprocessor removed
 * Twitter Bootstrap removed
@@ -33,7 +34,7 @@ $ bower install
 $ grunt watch
 ```
 
-Finally, open `file:///path/to/ngbp-slim-sass/build/index.html` in your browser.
+Finally, open `http://localhost:8000` in your browser.
 You're good to go. 
 
 ## Purpose
@@ -246,8 +247,8 @@ To ensure your setup works, launch grunt:
 $ grunt watch
 ```
 
-The built files are placed in the `build/` directory by default. Open the
-`build/index.html` file in your browser and check it out! Because everything is
+The built files are placed in the `build/` directory by default. Open
+`http://localhost:8000` in your browser and check it out! Because everything is
 compiled, no XHR requests are needed to retrieve templates, so until this needs
 to communicate with your backend there is no need to run it from a web server.
 
@@ -364,30 +365,10 @@ expected, open the `bin/index.html` file in your browser. Voila!
 ### Live Reload!
 
 `ngbp-slim-sass` also includes [Live Reload](http://livereload.com/), so you no
-longer have to refresh your page after making changes! You need a Live Reload
-browser plugin for this:
-
-- Chrome - [Chrome Webstore](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
-- Firefox - [Download from Live Reload](http://download.livereload.com/2.0.8/LiveReload-2.0.8.xpi)
-- Safari - [Download from Live Reload](http://download.livereload.com/2.0.9/LiveReload-2.0.9.safariextz)
-- Internet Explorer - Surely you jest.
-
-Note that if you're using the Chrome version with `file://` URLs (as is the
-default with `ngBoilerplate`) you need to tell Live Reload to allow it. Go to
-`Menu -> Tools -> Extensions` and check the "Allow access to file URLs" box next
-to the Live Reload plugin.
-
-When you load your page, click the Live Reload icon in your toolbar and
-everything should work magically. w00t!
-
-If you'd prefer to not install a browser extension, then you must add the
-following to the end of the `body` tag in `index.html`:
-
-```html
-<script src="http://localhost:35729/livereload.js"></script>
-```
-
-Boom!
+longer have to refresh your page after making changes! A JavaScript snippet is
+inserted into pages served by the development server, so no browser plugin is
+required.  If you use a Live Reload browser plugin, disable the javascript
+snippet (see Gruntfile.js connect task for more information)
 
 ## Contributions & Roadmap
 
