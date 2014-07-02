@@ -15,7 +15,7 @@ libraries get built into your application.
 
 ### Major differences from ngBoilerplate
 
-* Development server Grunt task added.
+* Development server with AngularJS HTML5Mode Redirects Added.
 * SASS css preprocessor added (via libsass)
 * LESS css preprocessor removed
 * Twitter Bootstrap removed
@@ -47,7 +47,7 @@ makes use of the [SASS](http://sass-lang.com) CSS preprocessor language.
 
 ## Popular Options
 
-Adding additional components to your application is easy, here's examples of
+Adding additional components to your application is easy, here are examples of
 two very popular framework options.
 
 ### Twitter Bootstrap
